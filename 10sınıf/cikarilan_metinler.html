@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10. Sınıf Tarih - Osmanlı Devleti</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --secondary: #ec4899;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --success: #10b981;
+            --bg-dark: #0f0f23;
+            --bg-card: #1a1a2e;
+            --bg-hover: #252542;
+            --text-primary: #ffffff;
+            --text-secondary: #a5b4fc;
+            --text-muted: #9ca3af;
+            --border: #3730a3;
+            --gradient-hero: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            --gradient-card: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
+            --gradient-accent: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-success: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            --gradient-info: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --glow: 0 0 40px rgba(99, 102, 241, 0.3);
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: var(--bg-dark);
+            background-image:
+                radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            color: var(--text-primary);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        /* Hero Header - Student Friendly */
+        .hero {
+            background: var(--gradient-hero);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50px, -50px) rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .badge span {
+            margin-right: 8px;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-weight: 500;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 20px 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-icon {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+            color: var(--accent-light);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: -40px auto 0;
+            padding: 0 20px 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Topic Cards */
+        .topic-card {
+            background: var(--gradient-card);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: var(--glow), 0 20px 50px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 60px rgba(99, 102, 241, 0.4), 0 30px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Topic Number Badge */
+        .topic-number {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-info);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Topic Title */
+        .topic-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+            padding-right: 70px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .topic-icon {
+            font-size: 1.4rem;
+        }
+
+        /* Content Styles */
+        .content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            line-height: 1.9;
+        }
+
+        .content strong {
+            color: var(--accent-light);
+            font-weight: 700;
+        }
+
+        h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            color: var(--primary-light);
+            margin: 25px 0 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3::before {
+            content: '▸';
+            color: var(--secondary);
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 25px 0;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--bg-hover);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: var(--gradient-info);
+        }
+
+        th {
+            padding: 18px 20px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.15);
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        tr:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Lists */
+        ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        li {
+            padding: 18px 25px;
+            margin-bottom: 12px;
+            background: var(--bg-hover);
+            border-radius: 14px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        li:hover {
+            transform: translateX(10px);
+            border-left-color: var(--secondary);
+            background: rgba(99, 102, 241, 0.15);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        li strong {
+            color: var(--accent-light);
+            font-weight: 700;
+        }
+
+        /* Question Box - Student Friendly */
+        .question-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            position: relative;
+        }
+
+        .question-box::before {
+            content: '💡';
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            background: var(--bg-card);
+            padding: 5px 10px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+        }
+
+        .question-label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .answer-label {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: var(--success);
+            font-size: 1.1rem;
+            margin: 20px 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Divider */
+        .divider {
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 40px 0;
+            border-radius: 2px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+        }
+
+        footer p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        footer .emoji {
+            font-size: 1.2rem;
+            margin: 0 5px;
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            font-size: 1.5rem;
+            z-index: 100;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* GitHub Button */
+        .github-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            border-radius: 50px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .github-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .github-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .topic-card {
+            animation: fadeInUp 0.6s ease-out backwards;
+        }
+
+        /* Responsive - Mobile First */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 15px 60px;
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+                letter-spacing: 0;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+
+            .badge {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+
+            .stats-container {
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 12px 18px;
+                border-radius: 15px;
+            }
+
+            .stat-icon {
+                font-size: 1.3rem;
+            }
+
+            .stat-number {
+                font-size: 1.4rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
+            }
+
+            .container {
+                padding: 0 12px 40px;
+                margin-top: -30px;
+            }
+
+            .topic-card {
+                padding: 20px 16px;
+                border-radius: 18px;
+                margin-bottom: 20px;
+            }
+
+            .topic-number {
+                width: 36px;
+                height: 36px;
+                font-size: 0.95rem;
+                top: 15px;
+                right: 12px;
+                border-radius: 10px;
+            }
+
+            .topic-title {
+                font-size: 1.1rem;
+                padding-right: 50px;
+                gap: 8px;
+            }
+
+            .topic-icon {
+                font-size: 1.1rem;
+            }
+
+            .content p {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            h3 {
+                font-size: 1rem;
+                margin: 20px 0 12px;
+            }
+
+            /* Tables Mobile */
+            .table-wrapper {
+                margin: 15px -16px;
+                border-radius: 0;
+            }
+
+            table {
+                font-size: 0.85rem;
+                border-radius: 0;
+            }
+
+            th,
+            td {
+                padding: 12px 10px;
+            }
+
+            th {
+                font-size: 0.85rem;
+            }
+
+            /* Lists Mobile */
+            li {
+                padding: 14px 16px;
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+                border-radius: 12px;
+            }
+
+            li:hover {
+                transform: none;
+            }
+
+            /* Question Box Mobile */
+            .question-box {
+                padding: 20px 16px;
+                margin: 20px 0;
+                border-radius: 15px;
+            }
+
+            .question-box::before {
+                top: -12px;
+                left: 16px;
+                font-size: 1rem;
+            }
+
+            .question-label,
+            .answer-label {
+                font-size: 1rem;
+            }
+
+            .divider {
+                margin: 25px 0;
+            }
+
+            /* Footer Mobile */
+            footer {
+                padding: 30px 15px;
+            }
+
+            footer p {
+                font-size: 0.85rem;
+            }
+
+            /* Scroll Button Mobile */
+            .scroll-top {
+                width: 45px;
+                height: 45px;
+                bottom: 20px;
+                right: 15px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 1.4rem;
+            }
+
+            .stat-card {
+                padding: 10px 14px;
+            }
+
+            .stat-number {
+                font-size: 1.2rem;
+            }
+
+            .topic-title {
+                font-size: 1rem;
+            }
+
+            th,
+            td {
+                padding: 10px 8px;
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="badge">
+                <span>🏫</span> Aliya İzzet Begoviç Anadolu İmam Hatip Lisesi
+            </div>
+            <h1>🏰 Osmanlı Devleti'nin Kuruluşu</h1>
+            <p>10. Sınıf Tarih Dersi - Ders Notları ve Çalışma Materyalleri</p>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">👨‍🎓</div>
+                    <span class="stat-number">Hamdi</span>
+                    <span class="stat-label">Şahin</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👨‍🏫</div>
+                    <span class="stat-number">İbrahim</span>
+                    <span class="stat-label">Bağalar</span>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <span class="stat-number">12</span>
+                    <span class="stat-label">Konu</span>
+                </div>
+            </div>
+            <a href="https://github.com/hamdi-sahin291/10.s-n-f-Tarih-1.d-nem-2.yaz-l-" target="_blank"
+                class="github-btn">
+                <svg class="github-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                </svg>
+                GitHub'da İncele
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container" id="content"></div>
+
+    <!-- Footer -->
+    <footer>
+        <p><span class="emoji">🏫</span> <strong>Aliya İzzet Begoviç Anadolu İmam Hatip Lisesi</strong></p>
+        <div style="margin: 15px 0;">
+            <p><strong>Hazırlayan:</strong> Hamdi Şahin &nbsp;|&nbsp; <strong>Öğretmen:</strong> İbrahim Bağalar</p>
+        </div>
+        <a href="https://github.com/hamdi-sahin291/10.s-n-f-Tarih-1.d-nem-2.yaz-l-" target="_blank"
+            style="color: #a5b4fc; text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 5px; margin-bottom: 10px;">
+            <svg style="width: 16px; height: 16px; fill: currentColor;" viewBox="0 0 24 24">
+                <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+            GitHub'da Görüntüle
+        </a>
+        <p style="margin-top: 10px; opacity: 0.6; font-size: 0.85rem;">10. Sınıf Tarih Dersi - Başarılar! 💪</p>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-top" id="scrollTop">⬆️</div>
+
+    <script>
+        const sections = [
+            {
+                icon: "🛡️",
+                title: "Osmanlı Askeri Birlikleri",
+                content: `
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Birlik/Grup</th>
+                                    <th>Görev ve Açıklamalar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Yaya ve Müsellemler</strong></td>
+                                    <td>Osmanlı Devleti'nin ilk düzenli ve daimî birliği olarak doğrudan padişaha bağlı hassa ordusunda görev yapmak; kapıkulu ordusu kurulduktan sonra ise köprü, yol ve kale inşaatlarında, nakliye işlerinde, maden ocaklarında ve tersanelerde çalışmak</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Akıncılar</strong></td>
+                                    <td>Sınır bölgelerinde keşif ve istihbarat yapmak; düşman topraklarına ani baskın düzenlemek; ordunun güvenliğini sağlamak; savaşın ilk aşamalarında düşmanı yıpratmak</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Tımarlı Sipahiler</strong></td>
+                                    <td>Eyaletlerde tımar topraklarının güvenliğini sağlamak; devlete ait vergileri toplamak; barış zamanında asayişi korumak; savaş zamanı kendi cebelüleriyle birlikte orduya katılmak</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Azaplar</strong></td>
+                                    <td>Savaşta ordunun en ön önünde yer almak, ilk hücumu karşılamak, sağa ve sola açılarak topçuların ateş etmesini sağlamak</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `
+            },
+            {
+                icon: "🌾",
+                title: "Arazi Sistemi",
+                content: `
+                    <h3>Yurtluk</h3>
+                    <p>Geliri sınır boylarındaki askerlere bırakılan arazilerdir.</p>
+                    <div class="divider"></div>
+                    <h3>Mukataa</h3>
+                    <p>Geliri doğrudan devlet hazinesine aktarılan arazilerdir.</p>
+                `
+            },
+            {
+                icon: "⚔️",
+                title: "Gönüllü Askeri Örgütler",
+                content: `
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Grup</th>
+                                    <th>Açıklama</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>GAZİYAN-I RUM</strong></td>
+                                    <td>Osmanlı'nın ilk zamanlarında gaza ve cihat amacıyla oluşturulmuş birliklerdi.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>ABDalan-ı Rum</strong></td>
+                                    <td>Anadolu'da İslamiyet'i yaymaya çalışan abdal veya dervişlerin yolundan gidenlerin kurmuş olduğu askeri birliklerdi.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>BACİYAN-I RUM</strong></td>
+                                    <td>Ahi Evran'ın Eşi öncülüğünde kurulmuş olan ve Osmanlı'nın ilk zamanlarında da devlete destek veren kadın askeri örgütlenmesidir.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>AHİYAN- RUM</strong></td>
+                                    <td>Osmanlı'da Ahi Teşkilatı'na bağlı kurulmuş gönüllü askeri birliklerdi.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `
+            },
+            {
+                icon: "🏛️",
+                title: "Tımar Sistemi",
+                content: `
+                    <p><strong>Tımar Sistemi:</strong> Dirlik topraklarının hizmet karşılığında sipahilere verilmesine dayanan, taşrada güvenlik ve düzeni sağlayan bir toprak yönetim sistemidir.</p>
+                    <ul>
+                        <li>✅ Hazineye yük olmadan tımarlı sipahiler ordusu yetiştirildi</li>
+                        <li>✅ Taşrada idari, askeri, sosyal ve ekonomik düzenin kurulmasına önemli katkı sağladı</li>
+                    </ul>
+                `
+            },
+            {
+                icon: "🏰",
+                title: "Edirne'nin Fethi",
+                content: `
+                    <div class="question-box">
+                        <span class="question-label">❓ Soru:</span>
+                        <p>Edirne'nin fethi Osmanlı Devleti'nin Rumeli'deki ilerleyişini nasıl etkileyebilir? Açıklayınız.</p>
+                        <span class="answer-label">✅ Cevap:</span>
+                        <p>Edirne'nin fethi, Osmanlı Devleti'nin Rumeli'de sadece askerî bir güç olarak değil, <strong>siyasi, idarî ve ekonomik açıdan</strong> da kalıcı bir devlet olarak var olmasını sağlamış ve Balkanlar'daki uzun süreli ilerleyişinin temelini oluşturmuştur.</p>
+                    </div>
+                `
+            },
+            {
+                icon: "🗺️",
+                title: "Osmanlı Genişleme Stratejisi",
+                content: `
+                    <div class="question-box">
+                        <span class="question-label">❓ Soru:</span>
+                        <p>Osmanlı Beyliği'nin başında siz olsaydınız sınırları genişletmek için nasıl bir siyasi ve askerî strateji izlerdiniz?</p>
+                        <span class="answer-label">✅ Cevap:</span>
+                        <ul>
+                            <li>🎯 Önce zayıf Bizans'a yönelerek <strong>gaza anlayışını</strong> kullanırdım</li>
+                            <li>🤝 Komşu beyliklerle <strong>diplomatik ilişkiler</strong> kurarak içte güvenliği sağlardım</li>
+                            <li>🌍 Balkanlara yönelerek <strong>toprak genişlemesini</strong> sürdürürdüm</li>
+                            <li>💰 Ticaret yollarını ele geçirerek <strong>ekonomik güç</strong> kazanırdım</li>
+                            <li>⚔️ Düzenli bir ordu ile bu kazanımları korurdum</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                icon: "🏳️",
+                title: "II. Dönem Anadolu Beylikleri",
+                content: `
+                    <ul>
+                        <li><strong>Osmanoğulları:</strong> Osman Bey tarafından, Söğüt-Domaniç merkezli kuruldu. Bizans sınırında kurulmuştur. Zamanla beylikten devlete dönüşmüştür.</li>
+                        <li><strong>Dulkadiroğulları:</strong> Elbistan merkez olmak üzere kurulmuştur. Yavuz Sultan Selim döneminde Osmanlı topraklarına katılmıştır.</li>
+                        <li><strong>Ramazanoğulları:</strong> Ramazan Bey tarafından Çukurova merkezli olarak kurulmuştur.</li>
+                        <li><strong>Karamanoğulları:</strong> Kerimüddin Karaman Bey tarafından Karaman, Ermenek merkezli kuruldu. Mehmet Bey döneminde Türkçe resmi dil ilan edildi.</li>
+                        <li><strong>Germiyanoğulları:</strong> Batı Anadolu'da Kütahya merkezli kurulmuştur. I. Murat'ın padişahlığı döneminde toprakları çeyiz yolu ile Osmanlı Devleti'ne bırakıldı.</li>
+                        <li><strong>Karesioğulları:</strong> Karesi Bey tarafından Balıkesir ve Çanakkale dolaylarında kurulmuştur. Osmanlı Beyliği'nin hakimiyetine giren <strong>ilk Türk beyliğidir</strong>.</li>
+                    </ul>
+                `
+            },
+            {
+                icon: "📅",
+                title: "Salname",
+                content: `
+                    <p><strong>Salname:</strong> Osmanlı Devleti'nde merkezî yönetimin, nezaretlerin, askerî kurumların, vilayetlerin, bazı özel kurumların ve kişilerin o yıl mevcut olan kurumsal, tarihî, coğrafi, eğitimsel, sosyal, ekonomik ve kültürel verilerinin yer aldığı bir tür <strong>yıllık</strong>.</p>
+                `
+            },
+            {
+                icon: "⚔️",
+                title: "Wittek'in Gaza Tezi",
+                content: `
+                    <div class="question-box">
+                        <span class="question-label">❓ Soru:</span>
+                        <p>Wittek, "gaza tezi"ni hangi kaynağa dayandırmaktadır?</p>
+                        <span class="answer-label">✅ Cevap:</span>
+                        <p>Wittek'in gaza tezi, ağırlıklı olarak <strong>1337 tarihli Orhan Gazi'ye ait Bursa kitâbesine</strong> dayanır.</p>
+                        <h3>Diğer Dayanaklar:</h3>
+                        <ul>
+                            <li>📍 Osmanlıların uç bölgesinde yaşamaları ve Doğu Roma sınırındaki gaza akınlarına katılmaları</li>
+                            <li>🕌 Ahi çevreleri, derviş-gazi toplulukları ve gönüllü savaşçıların Osmanlı bünyesine katılması</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                icon: "📖",
+                title: "Türk-İslam ve Batı Medeniyetlerinde Eğitim",
+                content: `
+                    <div class="question-box">
+                        <span class="question-label">❓ Soru:</span>
+                        <p>Türk-İslam ve Batı medeniyetlerinde eğitimin yaygınlaştırılması anlayışıyla ilgili iki cümle yazınız.</p>
+                        <span class="answer-label">✅ Cevap:</span>
+                        <h3>Türk-İslam Medeniyeti</h3>
+                        <p>İslam dünyasında kütüphaneler halkın bilim ve eğitime yaygın şekilde ulaşmasını sağlamış, <strong>vakıf sistemi</strong> aracılığıyla cami, medrese, kervansaray gibi kamusal mekânlarda açılan kütüphaneler sayesinde eğitim fırsatları toplumun farklı kesimlerine sunulmuştur.</p>
+                        <h3>Batı Medeniyeti</h3>
+                        <p>Orta çağ Avrupası'nda eğitim başlangıçta sadece kilise mensuplarına ait okuma-yazma ile sınırlı kalmış, XI. yüzyılın sonlarından itibaren <strong>şehirleşme ve ticaretin gelişmesiyle</strong> birlikte eğitime olan ilgi artarak daha geniş kesimlere yayılmaya başlamıştır.</p>
+                    </div>
+                `
+            },
+            {
+                icon: "👥",
+                title: "Selçuklu Toplumu",
+                content: `
+                    <div class="question-box">
+                        <span class="question-label">❓ Soru:</span>
+                        <p>Selçuklu toplumunun güçlü ve huzurlu bir yapıya sahip olmasında hangi değerler etkili olmuştur?</p>
+                        <span class="answer-label">✅ Cevap:</span>
+                        <ul>
+                            <li>👨‍👩‍👧‍👦 <strong>Aile kavramının güçlü olması</strong> nedeniyle yetişen bireylerin ailede, toplumda ve devletteki görev ve sorumluluk bilinciyle yetişmesi</li>
+                            <li>🕌 Türkistan'da sahip oldukları <strong>örf ve adetleri İslamiyet'in yaşam kültürü</strong> ile birleştirerek kurallara uyan dinamik bir kültür ortaya çıkarmış olması</li>
+                            <li>⚖️ <strong>Devlet sisteminin</strong> toplumda düzen sağlayıcı nitelikte oluşmuş olması</li>
+                        </ul>
+                    </div>
+                `
+            },
+            {
+                icon: "🏕️",
+                title: "Türklerde Yerleşik Hayat",
+                content: `
+                    <div class="question-box">
+                        <span class="question-label">❓ Ne Zaman?</span>
+                        <p><strong>Soru:</strong> Türklerde yerleşik hayat ne zaman başladı?</p>
+                        <span class="answer-label">✅ Cevap:</span>
+                        <p><strong>Talas Savaşı'ndan</strong> sonra Uygurlar Çinlilerin terk ettiği bölgeye yerleşerek tarımla uğraşmış ve yerleşik hayata geçmişlerdir.</p>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="question-box">
+                        <span class="question-label">❓ Nasıl?</span>
+                        <p><strong>Soru:</strong> Türklerde yerleşik hayat nasıl başladı?</p>
+                        <span class="answer-label">✅ Cevap:</span>
+                        <p>Uygurlar <strong>Mani dininin etkisi</strong> ile yerleşik hayata geçmişlerdir. Türklerin İslamiyet'i kabul etmesiyle birlikte, yerleşik hayata geçiş daha da hız kazanmıştır.</p>
+                    </div>
+                `
+            }
+        ];
+
+        // Render content with correct numbering
+        const container = document.getElementById('content');
+        const reversedSections = sections.slice().reverse();
+
+        reversedSections.forEach((section, index) => {
+            const card = document.createElement('div');
+            card.className = 'topic-card';
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.innerHTML = `
+                <span class="topic-number">${index + 1}</span>
+                <h2 class="topic-title">
+                    <span class="topic-icon">${section.icon}</span>
+                    ${section.title}
+                </h2>
+                <div class="content">${section.content}</div>
+            `;
+            container.appendChild(card);
+        });
+
+        // Scroll to top
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.pageYOffset > 300);
+        });
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+
+</html>
